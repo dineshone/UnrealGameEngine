@@ -1,6 +1,23 @@
 // Copyright 1998-2016 Epic Games, Inc. All Rights Reserved.
 //This file needs to be here so the "ant" build step doesnt fail when looking for a /src folder.
 
+/*
+ 
+ .----------------.  .----------------.  .-----------------. .----------------.  .----------------.  .----------------.
+ | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |
+ | |  ________    | || |     _____    | || | ____  _____  | || |  _________   | || |    _______   | || |  ____  ____  | |
+ | | |_   ___ `.  | || |    |_   _|   | || ||_   \|_   _| | || | |_   ___  |  | || |   /  ___  |  | || | |_   ||   _| | |
+ | |   | |   `. \ | || |      | |     | || |  |   \ | |   | || |   | |_  \_|  | || |  |  (__ \_|  | || |   | |__| |   | |
+ | |   | |    | | | || |      | |     | || |  | |\ \| |   | || |   |  _|  _   | || |   '.___`-.   | || |   |  __  |   | |
+ | |  _| |___.' / | || |     _| |_    | || | _| |_\   |_  | || |  _| |___/ |  | || |  |`\____) |  | || |  _| |  | |_  | |
+ | | |________.'  | || |    |_____|   | || ||_____|\____| | || | |_________|  | || |  |_______.'  | || | |____||____| | |
+ | |              | || |              | || |              | || |              | || |              | || |              | |
+ | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |
+ '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'
+ 
+ */
+
+
 package com.epicgames.ue4;
 
 import java.io.File;
@@ -77,7 +94,7 @@ import android.os.Build;
 
 import com.epicgames.ue4.DownloadShim;
 
-//$${gameActivityImportAdditions}$$
+
 
 //Extending NativeActivity so that this Java class is instantiated
 //from the beginning of the program.  This will allow the user
@@ -91,6 +108,26 @@ import com.epicgames.ue4.DownloadShim;
 
 public class GameActivity extends NativeActivity implements SurfaceHolder.Callback2
 {
+    /*
+     
+     (        )  (        )
+     )\ )  ( /(  )\ )  ( /(
+     (()/(  )\())(()/(  )\())
+     ((_))((_)\  ((_))((_)\
+    _| | /  (_) _| | /  (_)
+  / _` || () |/ _` || () |
+  \__,_| \__/ \__,_| \__/
+     
+     */
+
+    // d0d0 06/09/2016 added the load library. For some shitty reason, android was not able
+    // to detect the shared native libraries .so .So I am manually loading the shared native libraries
+    
+    static {
+        System.loadLibrary("UE4");
+       // System.loadLibrary("gnustl_shared");
+            }
+    
 	public static Logger Log = new Logger("UE4");
 	
 	public static final int DOWNLOAD_ACTIVITY_ID = 80001; // so we can identify the activity later
@@ -200,7 +237,15 @@ public class GameActivity extends NativeActivity implements SurfaceHolder.Callba
 	
 	private StoreHelper IapStoreHelper;
 
-//$${gameActivityClassAdditions}$$
+	/** Whether this application was packaged for GearVR or not */
+	public boolean PackagedForGearVR = false;
+
+	// check the manifest to determine if we are a GearVR application
+	public boolean AndroidThunkJava_IsGearVRApplication()
+	{
+		return PackagedForGearVR;
+	}
+
 
 	@Override
 	public void onStart()
@@ -214,7 +259,7 @@ public class GameActivity extends NativeActivity implements SurfaceHolder.Callba
 			registerReceiver(consoleCmdReceiver, new IntentFilter(Intent.ACTION_RUN));
 		}
 		
-//$${gameActivityOnStartAdditions}$$
+
 		Log.debug("==================================> Inside onStart function in GameActivity");
 	}
 
@@ -494,7 +539,18 @@ public class GameActivity extends NativeActivity implements SurfaceHolder.Callba
 				Log.debug( "UI hiding not found. Leaving as " + ShouldHideUI);
 			}
 
-//$${gameActivityReadMetadataAdditions}$$
+			if(bundle.containsKey("com.samsung.android.vr.application.mode"))
+			{
+				PackagedForGearVR = true;
+				String VRMode = bundle.getString("com.samsung.android.vr.application.mode");
+				Log.debug("Found GearVR mode = " + VRMode);
+			}
+			else
+			{
+				PackagedForGearVR = false;
+				Log.debug("No GearVR mode detected.");
+			}
+
 		}
 		catch (NameNotFoundException e)
 		{
@@ -662,7 +718,7 @@ public class GameActivity extends NativeActivity implements SurfaceHolder.Callba
 			HasAllFiles = true;
 		}
 
-//$${gameActivityOnCreateAdditions}$$
+
 		// Need to create our surface view here regardless of if we are going to end up using it
 		getWindow().takeSurface(null);
 		MySurfaceView = new SurfaceView(this);
@@ -742,7 +798,7 @@ public class GameActivity extends NativeActivity implements SurfaceHolder.Callba
 			}
 		}
 
-//$${gameActivityOnResumeAdditions}$$
+
 		Log.debug("==============> GameActive.onResume complete!");
 	}
 
@@ -750,7 +806,7 @@ public class GameActivity extends NativeActivity implements SurfaceHolder.Callba
 	protected void onPause()
 	{
 		super.onPause();
-//$${gameActivityOnPauseAdditions}$$
+
 		Log.debug("==============> GameActive.onPause complete!");
 	}
 
@@ -764,7 +820,7 @@ public class GameActivity extends NativeActivity implements SurfaceHolder.Callba
 			unregisterReceiver(consoleCmdReceiver);
 		}
 
-//$${gameActivityOnStopAdditions}$$
+
 		Log.debug("==============> GameActive.onStop complete!");
 	}
 
@@ -776,7 +832,7 @@ public class GameActivity extends NativeActivity implements SurfaceHolder.Callba
 		{
 			IapStoreHelper.onDestroy();
 		}
-//$${gameActivityOnDestroyAdditions}$$
+
 		Log.debug("==============> GameActive.onDestroy complete!");
 	}
 
@@ -1321,7 +1377,7 @@ public class GameActivity extends NativeActivity implements SurfaceHolder.Callba
 			super.onActivityResult(requestCode, resultCode, data);
 		}
 
-//$${gameActivityOnActivityResultAdditions}$$
+
 		
 		if(InitCompletedOK)
 		{
@@ -1563,7 +1619,15 @@ public class GameActivity extends NativeActivity implements SurfaceHolder.Callba
 	static
 	{
 		System.loadLibrary("gnustl_shared");
-//$${soLoadLibrary}$$
+		try
+		{
+			System.loadLibrary("vrapi");
+		}
+		catch (java.lang.UnsatisfiedLinkError e)
+		{
+			Log.debug("GearVR library not loaded and required!");
+		}
+
 		System.loadLibrary("UE4");
 	}
 }

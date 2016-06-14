@@ -11,6 +11,8 @@
     <AssemblyName>AutomationScripts.Automation</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -38,11 +40,6 @@
       <HintPath>..\..\..\..\Binaries\DotNET\Ionic.Zip.Reduced.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="OneSky, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\Binaries\DotNET\OneSky.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -53,6 +50,19 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="OneSky">
+      <HintPath>..\..\..\..\Binaries\DotNET\OneSky.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnrealBuildTool">
+      <HintPath>..\..\..\..\Binaries\DotNET\UnrealBuildTool.exe</HintPath>
+    </Reference>
+    <Reference Include="AutomationUtils.Automation">
+      <HintPath>..\..\..\..\Binaries\DotNET\AutomationUtils.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="GUBP.Automation">
+      <HintPath>..\..\..\..\Binaries\DotNET\AutomationScripts\GUBP.Automation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\DotNETCommon\MetaData.cs">
@@ -90,23 +100,6 @@
     <Compile Include="UE4BuildUtils.cs" />
     <Compile Include="UnrealSync.Automation.cs" />
     <Compile Include="UpdateLocalVersion.Automation.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\UnrealBuildTool\UnrealBuildTool.csproj">
-      <Project>{fd7c5e1a-cfe4-4fd5-a525-1eb1599a39ac}</Project>
-      <Name>UnrealBuildTool</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\AutomationUtils\AutomationUtils.Automation.csproj">
-      <Project>{2c96a7f2-b1a3-4258-8e0a-e588ff41a53e}</Project>
-      <Name>AutomationUtils.Automation</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\GUBP\GUBP.Automation.csproj">
-      <Project>{9a1a118b-37fc-4f33-bbf4-b431b6e3b3ac}</Project>
-      <Name>GUBP.Automation</Name>
-      <Private>False</Private>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

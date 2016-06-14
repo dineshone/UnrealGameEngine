@@ -11,6 +11,8 @@
     <AssemblyName>Android.Automation</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,11 +36,6 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="OneSky, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\Binaries\DotNET\OneSky.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Ionic.Zip.Reduced">
       <HintPath>..\..\..\..\Binaries\DotNET\Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
@@ -52,6 +49,22 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="OneSky">
+      <HintPath>..\..\..\..\Binaries\DotNET\OneSky.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AutomationUtils.Automation">
+      <HintPath>..\..\..\..\Binaries\DotNET\AutomationUtils.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="UnrealBuildTool">
+      <HintPath>..\..\..\..\Binaries\DotNET\UnrealBuildTool.exe</HintPath>
+    </Reference>
+    <Reference Include="GUBP.Automation">
+      <HintPath>..\..\..\..\Binaries\DotNET\AutomationScripts\GUBP.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="AutomationScripts.Automation">
+      <HintPath>..\Scripts\obj\Development\AutomationScripts.Automation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\DotNETCommon\MetaData.cs">
@@ -59,23 +72,6 @@
     </Compile>
     <Compile Include="AndroidPlatform.Automation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\UnrealBuildTool\UnrealBuildTool.csproj">
-      <Project>{fd7c5e1a-cfe4-4fd5-a525-1eb1599a39ac}</Project>
-      <Name>UnrealBuildTool</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\AutomationUtils\AutomationUtils.Automation.csproj">
-      <Project>{2c96a7f2-b1a3-4258-8e0a-e588ff41a53e}</Project>
-      <Name>AutomationUtils.Automation</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\Scripts\AutomationScripts.Automation.csproj">
-      <Project>{8aa00d65-0954-4a27-ac0d-fb8b1106120f}</Project>
-      <Name>AutomationScripts.Automation</Name>
-      <Private>False</Private>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

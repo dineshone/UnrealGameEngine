@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="UE4BaseTheme" parent = "@android:style/Theme.Black.NoTitleBar.Fullscreen" />
-
+    <style name="UE4BaseTheme" parent="android:Theme.Black.NoTitleBar.Fullscreen" >
+        
+	</style>
+ 
     <style name="UE4SplashTheme" parent = "UE4BaseTheme" />
 
     <style name="NotificationText">
@@ -25,5 +27,9 @@
     <style name="ButtonBackground">
         <item name="android:background">@android:color/background_dark</item>
     </style>
+  
+  
+  		<!-- Base application theme. -->
+	  <style name="AppTheme" parent="android:Theme.Light" />
 
 </resources>

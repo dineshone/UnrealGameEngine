@@ -103,3 +103,9 @@
 -keep class epicgames.ue4.GooglePlayStoreHelper.** {
 	public *;
 }
+
+#d0d0 05/02/2016 5:42 PM
+# Needed to keep the Hazard Activity around
+-keep class com.hazardnetworking.unrealandroidtest2 {
+   public *;
+}

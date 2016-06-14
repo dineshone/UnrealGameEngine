@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationScripts.Automation", "AutomationScripts.Automation.csproj", "{8AA00D65-0954-4A27-AC0D-FB8B1106120F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Development|Any CPU = Development|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8AA00D65-0954-4A27-AC0D-FB8B1106120F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AA00D65-0954-4A27-AC0D-FB8B1106120F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AA00D65-0954-4A27-AC0D-FB8B1106120F}.Development|Any CPU.ActiveCfg = Development|Any CPU
+		{8AA00D65-0954-4A27-AC0D-FB8B1106120F}.Development|Any CPU.Build.0 = Development|Any CPU
+	EndGlobalSection
+EndGlobal

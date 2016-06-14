@@ -11,6 +11,8 @@
     <AssemblyName>AutomationUtils.Automation</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,6 +51,12 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnrealBuildTool">
+      <HintPath>..\..\UnrealBuildTool\obj\Development\UnrealBuildTool.exe</HintPath>
+    </Reference>
+    <Reference Include="DotNETUtilities">
+      <HintPath>..\..\..\..\Binaries\DotNET\DotNETUtilities.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Automation.cs" />
@@ -83,18 +91,6 @@
     <Compile Include="Utils.cs" />
     <Compile Include="WatchdogTimer.cs" />
     <Compile Include="WindowsHostPlatform.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\DotNETCommon\DotNETUtilities\DotNETUtilities.csproj">
-      <Project>{5d7d66e8-8c76-4af9-b3ec-2ef03421d730}</Project>
-      <Name>DotNETUtilities</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\..\UnrealBuildTool\UnrealBuildTool.csproj">
-      <Project>{fd7c5e1a-cfe4-4fd5-a525-1eb1599a39ac}</Project>
-      <Name>UnrealBuildTool</Name>
-      <Private>False</Private>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

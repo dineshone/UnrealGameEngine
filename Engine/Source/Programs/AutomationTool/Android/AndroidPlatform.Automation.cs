@@ -628,6 +628,7 @@ public class AndroidPlatform : Platform
 		string IntermediateCmdLineFile = CombinePaths(SC.StageDirectory, "UE4CommandLine.txt");
 		Project.WriteStageCommandline(IntermediateCmdLineFile, Params, SC);
 
+
 		// copy files to device if we were staging
 		if (SC.Stage)
 		{

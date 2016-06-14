@@ -5,8 +5,11 @@
 		unless="sdk.dir"
 	/>
     
+	<!-- d0d0 05/02/2015 -->
+	<echo> d0d0 Added Dependency on APPCompat Library:</echo>
 	<path id="android.antlibs">
 		<pathelement path="${sdk.dir}/tools/lib/ant-tasks.jar" />
+		<!-- <pathelement path="${sdk.dir}/extras/android/support/v7/appcompat/libs/android-support-v7-appcompat.jar" />  -->
 	</path>
 	
 	<!-- Custom tasks -->

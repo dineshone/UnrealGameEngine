@@ -17,6 +17,28 @@ public class SplashActivity extends Activity
 	{
 		super.onCreate(savedInstanceState);
 
+        
+        /*
+         
+            (        )  (        )
+            )\ )  ( /(  )\ )  ( /(
+            (()/(  )\())(()/(  )\())
+           ((_))((_)\  ((_))((_)\
+           _| | /  (_) _| | /  (_)
+         / _` || () |/ _` || () |
+         \__,_| \__/ \__,_| \__/
+         
+         */
+        
+        // d0d0 06/09/2016 added the load library. For some shitty reason, android was not able
+        // to detect the shared native libraries .so .So I am manually loading the shared native libraries
+        
+        static {
+            System.loadLibrary("UE4");
+            //System.loadLibrary("gnustl_shared");
+        }
+
+        
 		boolean ShouldHideUI = false;
 		try {
 			ApplicationInfo ai = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
