@@ -217,8 +217,7 @@ namespace UnrealBuildTool
 
 */
 
-			// d0d0 Holy fuckin shit ...
-			// this has got to be  a bug ... i finally found a bug with unreal :-)
+			// d0d0 
 			// It was getting the Ant Path from the environment vriable ANT_HOME
 			// then for some reason, this Ant Path was over written with a value from eclipse folder ...
 			// I guess they intended to get the value from eclipse folder only if ANT_HOME is not valid
